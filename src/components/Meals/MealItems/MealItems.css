@@ -1,16 +1,48 @@
 .mealItem__container {
-  border: 1px solid black;
   width: 60rem;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 15px;
-  top: 32rem;
+  top: 12.8rem;
   background-color: white;
   padding: 40px;
 }
 
 .mealItem {
-  margin: 0;
-  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid gray;
+  padding: 10px 0;
+}
+
+.price {
+  color: #a53219;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.mealItem__quantity {
+  display: flex;
+  flex-direction: column;
+}
+
+.mealItem__quantityInput {
+  width: 4.4rem;
+  padding: 2px 4px;
+  margin-left: 4px;
+  border-radius: 5px;
+  border: 1px solid rgb(235, 233, 233);
+}
+
+.mealItem__btnContainer {
+  align-self: flex-end;
+}
+
+.mealItem__btn {
+  padding: 2px 18px;
+  color: white;
+  background-color: #a53219;
+  border-radius: 10px;
 }
