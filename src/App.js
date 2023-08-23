@@ -1,24 +1,28 @@
-import { createPortal } from "react-dom";
 import Header from "./components/Layout/Header/Header";
 import Summary from "./components/Layout/Summary/Summary";
 import MealItems from "./components/Meals/MealItems/MealItems";
 import AddCart from "./components/Cart/AddCart";
 import { useState } from "react";
+import { CartContextProvider } from "./context/cart-context";
 
 function App() {
-  const [isOpen,setIsOpen] = useState(false)
+  const [isCartOpen,setIsCartOpen] = useState(false)
+
+  const showCartHandler = () => {
+    setIsCartOpen(true)
+  }
+
+  const hideCartHandler = () => {
+    setIsCartOpen(false)
+  }
+
   return (
-    <>
-      <Header setIsOpen={setIsOpen} />
+    <CartContextProvider>
+      <Header  onShowCart={showCartHandler}/>
       <Summary />
       <MealItems /> 
-      {
-        createPortal(
-          <AddCart isOpen={isOpen} setIsOpen={setIsOpen} />,
-          document.getElementById("overlay")
-        )
-      }
-    </>
+      {isCartOpen && <AddCart onHideCart={hideCartHandler}/>}
+    </CartContextProvider>
   );
 }
 
