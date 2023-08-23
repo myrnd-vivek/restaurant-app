@@ -10,7 +10,7 @@ const MealItem = ({ meal }) => {
 	};
 
 	const addItemHandler = () => {
-    addItem(meal,amount)
+    addItem({...meal,amount})
     setAmount('')
   };
 

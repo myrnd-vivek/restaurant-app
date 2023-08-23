@@ -1,7 +1,7 @@
 import Header from "./components/Layout/Header/Header";
 import Summary from "./components/Layout/Summary/Summary";
 import MealItems from "./components/Meals/MealItems/MealItems";
-import AddCart from "./components/Cart/AddCart";
+import Cart from "./components/Cart/Cart";
 import { useState } from "react";
 import { CartContextProvider } from "./context/cart-context";
 
@@ -21,7 +21,7 @@ function App() {
       <Header  onShowCart={showCartHandler}/>
       <Summary />
       <MealItems /> 
-      {isCartOpen && <AddCart onHideCart={hideCartHandler}/>}
+      {isCartOpen && <Cart onHideCart={hideCartHandler}/>}
     </CartContextProvider>
   );
 }

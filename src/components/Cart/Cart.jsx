@@ -1,18 +1,22 @@
 import React from "react";
-import "./AddCart.css";
+import "./Cart.css";
 import Modal from "../UI/Modal";
 import { useCartContext } from "../../context/cart-context";
+import CartItems from "./CartItems";
 
-const AddCart = ({onHideCart}) => {
-	const {totalAmount} = useCartContext()
-	
+const Cart = ({onHideCart}) => {
+	const {totalAmount,items} = useCartContext()	
 	return (
 		<Modal>
 			<div className="container">
-				<h4 className="container__title">Sushi</h4>
+				<div className="cartItems">
+					{
+						items.map((item) => <CartItems key={item.id} item={item}/>)
+					}
+				</div>
 				<div className="container__amount">
 					<h2>Total Amount</h2>
-					<h2>{totalAmount}</h2>
+					<h2>${totalAmount}</h2>
 				</div>
 				<div className="container__btn">
 					<button className="btn" onClick={() => onHideCart()}>Close</button>
@@ -23,4 +27,4 @@ const AddCart = ({onHideCart}) => {
 	);
 };
 
-export default AddCart;
+export default Cart;
