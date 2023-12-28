@@ -6,7 +6,7 @@ import { useState } from "react";
 import { CartContextProvider } from "./context/cart-context";
 
 function App() {
-  const [isCartOpen,setIsCartOpen] = useState(false)
+  const [isCartOpen,setIsCartOpen] = useState<boolean>(false)
 
   const showCartHandler = () => {
     setIsCartOpen(true)

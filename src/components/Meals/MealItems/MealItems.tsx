@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import "./MealItems.css";
 import MealItem from "../MealItem/MealItem";
+import { Meal } from "../../../types/meal.type";
+
+import "./MealItems.css";
 
 const MealItems = () => {
-	const mealItems = [
+	const mealItems:Meal[] = [
 		{
 			id: 1,
 			name: "Sushi",
@@ -44,8 +45,8 @@ const MealItems = () => {
 
 	return (
 		<div className="mealItem__container">
-			{mealItems.map((meal) => {
-				return <MealItem meal={meal} key={meal.id} />;
+			{mealItems.map((meal:Meal) => {
+				return <MealItem meal={meal} key={meal.id}/>;
 			})}
 		</div>
 	);

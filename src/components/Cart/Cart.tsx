@@ -1,22 +1,26 @@
-import React from "react";
-import "./Cart.css";
 import Modal from "../UI/Modal";
-import { useCartContext } from "../../context/cart-context";
 import CartItems from "./CartItems";
+import { useCartContext } from "../../context/cart-context";
 
-const Cart = ({onHideCart}) => {
-	const {totalAmount,items} = useCartContext()	
+import "./Cart.css";
+
+type Props = {
+	onHideCart: () => void
+}
+
+const Cart = ({onHideCart}:Props) => {
+	const {totalCartAmount,cartItems} = useCartContext()	
 	return (
 		<Modal>
 			<div className="container">
 				<div className="cartItems">
 					{
-						items.map((item) => <CartItems key={item.id} item={item}/>)
+						cartItems.map((item) => <CartItems key={item.id} item={item}/>)
 					}
 				</div>
 				<div className="container__amount">
 					<h2>Total Amount</h2>
-					<h2>${totalAmount}</h2>
+					<h2>${totalCartAmount.toFixed(2)}</h2>
 				</div>
 				<div className="container__btn">
 					<button className="btn" onClick={() => onHideCart()}>Close</button>

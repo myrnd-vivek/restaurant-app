@@ -1,3 +1,25 @@
 .cartItem__container {
-  border-bottom: 1px solid black;
+	border-bottom: 1px solid black;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.btn__quantity {
+	width: 30px;
+	margin-left: 5px;
+	border-radius: 5px;
+	border: 1px solid gray;
+}
+
+.increment {
+	background-color: #a53219;
+	color: white;
+}
+
+.increment:ho
+
+.decrement {
+	background-color: white;
+	color: #a53219;
 }

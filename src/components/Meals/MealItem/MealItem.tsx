@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import { useCartContext } from "../../../context/cart-context";
+import { Meal } from "../../../types/meal.type";
 
-const MealItem = ({ meal }) => {
-	const [amount, setAmount] = useState("");
+type MealItemProps = {
+	meal: Meal;
+};
+
+const MealItem = ({ meal }: MealItemProps) => {
+	const [amount, setAmount] = useState<number>(0);
 	const { addItem } = useCartContext();
 
-	const amountChangeHandler = (ev) => {
-		setAmount(ev.target.value);
+	const amountChangeHandler = (ev: React.ChangeEvent<HTMLInputElement>) => {
+		setAmount(parseInt(ev.target.value));
 	};
 
 	const addItemHandler = () => {
-    addItem({...meal,amount})
-    setAmount('')
-  };
+		addItem({...meal,amount})
+		setAmount(0);
+	};
 
 	return (
 		<section className="mealItem">
@@ -26,9 +31,10 @@ const MealItem = ({ meal }) => {
 					<label>Amount</label>
 					<input
 						type="number"
-						value={amount}
+						value={amount || ""}
 						onChange={amountChangeHandler}
 						className="mealItem__quantityInput"
+						min={1}
 					/>
 				</div>
 				<div className="mealItem__btnContainer">
